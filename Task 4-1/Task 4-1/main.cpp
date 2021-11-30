@@ -65,9 +65,10 @@ int main()
 	cout << "Please input array length: ";
 	size_t size;
 	cin >> size;
+	const size_t size_array = size;
 
-	int* array = new int[size];
-	int* second_array = new int[size];
+	int* array = new int[size_array];
+	int* second_array = new int[size_array];
 
 	cout << "\nChoose array:\n" << "1) Array with random number\n" << "2) Array with user number\n" << "1 or 2: ";
 	int choice;
@@ -79,28 +80,36 @@ int main()
 	{
 	case ArrayType::RandomNumber:
 	{
-		RandomArray(array, size, MIN, MAX);
+		RandomArray(array, size_array, MIN, MAX);
 		break;
 	}
 	case ArrayType::UserNumber:
 	{
-		UserArray(array, size);
+		UserArray(array, size_array);
 		break;
 	}
 	default:
 		break;
 	}
 
-	cout << "Сумма чётных отрицательных элементов " << SumNumbers(array, size) << endl;
+	cout << "Сумма чётных отрицательных элементов " << SumNumbers(array, size_array) << endl;
 
 	cout << "Индексы элементов, значения которых кратны 3 и 6: \n";
 
-	NumberElements(array, size);
+	NumberElements(array, size_array);
 	cout << endl;
-	cout << "Новый массив, в котором элементы, находящиеся между максимальным и минимальным, заменяются нулями: " << endl; SecondArray(array, second_array, size);
+	cout << "Новый массив, в котором элементы, находящиеся между максимальным и минимальным, заменяются нулями: " << endl; SecondArray(array, second_array, size_array);
 
-	delete[] array;
-	delete[] second_array;
+	if (array != nullptr)
+	{
+		delete[] array;
+		array = nullptr;
+	}
+	if (second_array != nullptr)
+	{
+		delete[] second_array;
+		second_array = nullptr;
+	}
 }
 
 void RandomArray(int* array, const size_t size, const int min, const int max)
@@ -141,14 +150,14 @@ int SumNumbers(int* array, const size_t size)
 
 void NumberElements(int* array, const size_t size)
 {
-	bool k = false;
+	bool check = false;
 	for (size_t i = 0; i < size; i++) {
-		if (array[i] % 3 == 0 && array[i] % 6 == 0) {
+		if (array[i] % 6 == 0) {
 			cout << "Номер элемента: " << i << endl;
-			k = true;
+			check = true;
 		}
 	}
-	if (k == false) {
+	if (check == false) {
 		cout << "Таких элементов нет ";
 	}
 }
