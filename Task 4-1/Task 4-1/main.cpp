@@ -24,14 +24,14 @@ void RandomArray(int* array, const size_t size, const int min, const int max);
 void UserArray(int* array, const size_t size);
 
 /**
-* \brief Сумма элементов, по модулю меньших 10
+* \brief Сумма чётных отрицательных элементов
 * \param array Массив
 * \param size Размер массива
 **/
 int SumNumbers(int* array, const size_t size);
 
 /**
-* \brief Количество элементов(значения которых больше значения последующего)
+* \brief Количество элементов, кратных 3 и 6
 * \param array Массив
 * \param size Размер массива
 * \param A значение по условию
@@ -39,7 +39,7 @@ int SumNumbers(int* array, const size_t size);
 void NumberElements(int* array, const size_t size);
 
 /**
-* \brief Новый массив(все элементы, кратные 3, умножаются на 3 элемент массива)
+* \brief Новый массив(нули между минимумом и максимумом)
 * \param array Массив
 * \param second_array Обработанный массив
 * \param size Размер массива
@@ -59,7 +59,7 @@ int main()
 	cout.precision(3);
 	cout << fixed;
 
-	const int MIN = -40, MAX = 40;
+	const int MIN = -1000, MAX = 1000;
 	int sum;
 
 	cout << "Please input array length: ";
