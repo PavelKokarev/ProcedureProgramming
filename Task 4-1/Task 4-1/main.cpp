@@ -70,7 +70,10 @@ int main()
 	int* array = new int[size_array];
 	int* second_array = new int[size_array];
 
-	cout << "\nChoose array:\n" << "1) Array with random number\n" << "2) Array with user number\n" << "1 or 2: ";
+	cout << "Which way of array filling are you prefer?\n"
+		<< static_cast<int>(ArrayType::RandomNumber) << " - random,\n"
+		<< static_cast<int>(ArrayType::UserNumber) << " - keyboard.\n"
+		<< "Your choice is ";
 	int choice;
 	cin >> choice;
 
